@@ -1,0 +1,26 @@
+{
+  "name": "vuttr-api",
+  "version": "0.0.1",
+  "description": "api-nodejs-example-for-vuttr-api",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/romulo94/vuttr-api.git"
+  },
+  "keywords": [
+    "nodejs"
+  ],
+  "author": "Romulo Rocha <romulorocha063@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/romulo94/vuttr-api/issues"
+  },
+  "homepage": "https://github.com/romulo94/vuttr-api#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
