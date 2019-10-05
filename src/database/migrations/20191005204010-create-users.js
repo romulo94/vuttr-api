@@ -13,6 +13,7 @@ module.exports = {
       },
       email: {
         type: Sequelize.STRING,
+        unique: true,
         allowNull: false,
       },
       password_hash: {
@@ -28,6 +29,8 @@ module.exports = {
         type: Sequelize.DATE,
         allowNull: false,
       },
+
+      indexes: [{ unique: true, fields: ['email'] }],
     });
   },
 
