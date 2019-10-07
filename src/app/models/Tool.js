@@ -11,6 +11,8 @@ class Tool extends Model {
       },
       {
         sequelize,
+        createdAt: 'created_at', // <====== this line and the following one
+        updatedAt: 'updated_at',
       }
     );
 
