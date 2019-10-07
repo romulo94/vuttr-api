@@ -3,6 +3,10 @@ import User from '../models/User';
 import authConfig from '../../config/auth';
 
 class SessionController {
+  async index(req, res) {
+    return res.json({ message: 'Token is valid' });
+  }
+
   async store(req, res) {
     const { email, password } = req.body;
 
