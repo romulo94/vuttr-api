@@ -2,9 +2,9 @@ import request from 'supertest';
 import app from '../../src/app';
 
 import truncate from '../util/truncate';
-import factory from '../factories';
+// import factory from '../factories';
 
-describe('Tools', () => {
+describe('Tool', () => {
   beforeEach(async () => {
     await truncate();
   });
@@ -40,7 +40,19 @@ describe('Tools', () => {
 
     const response = await request(app).get('/tools');
 
-    expect(response.body).toEqual({ id: 1, ...tool });
+    expect(response.body[0]).toEqual(
+      expect.objectContaining({
+        id: expect.any(Number),
+        title: expect.any(String),
+        link: expect.any(String),
+        tags: expect.any(Array),
+        description: expect.any(String),
+        createdAt: expect.any(String),
+        updatedAt: expect.any(String),
+      })
+    );
+
+    expect(response.status).toBe(200);
   });
 
   it('should be  to filter tools by tag', async () => {
@@ -54,15 +66,18 @@ describe('Tools', () => {
 
     const response = await request(app).get('/tools?tag=node');
 
-    expect(response.body).toEqual([{ id: 2, ...toolNode }]);
+    expect(response.body.length).toBe(1);
+    expect(response.body[0].tags).toContain('node');
   });
 
   it('should be to remove tools by id', async () => {
-    await request(app)
+    const {
+      body: { id },
+    } = await request(app)
       .post('/tools')
       .send(tool);
 
-    const response = await request(app).delete(`/tools/${1}`);
+    const response = await request(app).delete(`/tools/${id}`);
 
     expect(response.status).toBe(204);
   });
