@@ -13,12 +13,12 @@ routes.get('/', (req, res) => res.json({ message: 'Welcome to API VUTTR' }));
 routes.post('/users', UserController.store);
 routes.post('/session', SessionController.store);
 
-routes.use(authMiddleware);
-
 routes.get('/tools', ToolController.index);
 routes.delete('/tools/:id', ToolController.delete);
 
 routes.get('/session', authMiddleware, SessionController.index);
+
+routes.use(authMiddleware);
 routes.post('/tools', ToolController.store);
 
 export default routes;
