@@ -22,7 +22,13 @@ class ToolController {
 
   async store(req, res) {
     const { title, link, description, tags } = req.body;
-    const response = await Tool.create({ title, link, description, tags });
+    const response = await Tool.create({
+      title,
+      link,
+      description,
+      tags,
+      user_id: req.userId,
+    });
 
     return res.status(201).json(response);
   }

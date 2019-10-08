@@ -12,14 +12,30 @@ with `npm`
 
 ```console(javascript)
     npm install
-    npm start
+    npm run dev
 ```
 
 or
 
 ```console(javascript)
     yanr
-    yarn start
+    yarn dev
+```
+
+### How to test
+
+with `npm`
+
+```console(javascript)
+    npm install
+    npm run test
+```
+
+or
+
+```console(javascript)
+    yanr
+    yarn test
 ```
 
 ### Libraries

@@ -8,15 +8,17 @@ import ToolController from './app/controllers/ToolController';
 
 const routes = new Router();
 
-routes.get('/', (req, res) => res.json({ message: 'Welcome to Omni CLI' }));
+routes.get('/', (req, res) => res.json({ message: 'Welcome to API VUTTR' }));
 
 routes.post('/users', UserController.store);
 routes.post('/session', SessionController.store);
 
+routes.use(authMiddleware);
+
 routes.get('/tools', ToolController.index);
-routes.post('/tools', ToolController.store);
 routes.delete('/tools/:id', ToolController.delete);
 
 routes.get('/session', authMiddleware, SessionController.index);
+routes.post('/tools', ToolController.store);
 
 export default routes;

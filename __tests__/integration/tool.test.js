@@ -47,8 +47,8 @@ describe('Tool', () => {
         link: expect.any(String),
         tags: expect.any(Array),
         description: expect.any(String),
-        createdAt: expect.any(String),
-        updatedAt: expect.any(String),
+        created_at: expect.any(String),
+        updated_at: expect.any(String),
       })
     );
 
