@@ -13,7 +13,10 @@ module.exports = {
       },
       description: {
         type: Sequelize.STRING,
-        unique: true,
+        allowNull: false,
+      },
+      link: {
+        type: Sequelize.STRING,
         allowNull: false,
       },
       tags: {
