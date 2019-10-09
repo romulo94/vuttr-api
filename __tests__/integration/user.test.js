@@ -28,6 +28,7 @@ describe('User', () => {
       .send(user);
 
     expect(response.body).toHaveProperty('id');
+    expect(response.status).toBe(201);
   });
 
   it('should not be able to register with duplicated email', async () => {
@@ -41,6 +42,6 @@ describe('User', () => {
       .post('/users')
       .send(user);
 
-    expect(response.status).toBe(400);
+    expect(response.status).toBe(409);
   });
 });

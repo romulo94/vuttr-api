@@ -1,5 +1,6 @@
 import request from 'supertest';
 import app from '../../src/app';
+import factory from '../factories';
 
 import truncate from '../util/truncate';
 // import factory from '../factories';
@@ -26,16 +27,48 @@ describe('Tool', () => {
   };
 
   it('should be able to create tool', async () => {
+    const user = await factory.attrs('User');
+
+    await request(app)
+      .post('/users')
+      .send(user);
+
+    const {
+      body: { token },
+    } = await request(app)
+      .post('/session')
+      .send({
+        email: user.email,
+        password: user.password,
+      });
+
     const response = await request(app)
       .post('/tools')
+      .set('authorization', `Bearer ${token}`)
       .send(tool);
 
     expect(response.status).toBe(201);
   });
 
   it('should be able to list tools', async () => {
+    const user = await factory.attrs('User');
+
+    await request(app)
+      .post('/users')
+      .send(user);
+
+    const {
+      body: { token },
+    } = await request(app)
+      .post('/session')
+      .send({
+        email: user.email,
+        password: user.password,
+      });
+
     await request(app)
       .post('/tools')
+      .set('authorization', `Bearer ${token}`)
       .send(tool);
 
     const response = await request(app).get('/tools');
@@ -56,12 +89,29 @@ describe('Tool', () => {
   });
 
   it('should be  to filter tools by tag', async () => {
+    const user = await factory.attrs('User');
+
+    await request(app)
+      .post('/users')
+      .send(user);
+
+    const {
+      body: { token },
+    } = await request(app)
+      .post('/session')
+      .send({
+        email: user.email,
+        password: user.password,
+      });
+
     await request(app)
       .post('/tools')
+      .set('authorization', `Bearer ${token}`)
       .send(tool);
 
     await request(app)
       .post('/tools')
+      .set('authorization', `Bearer ${token}`)
       .send(toolNode);
 
     const response = await request(app).get('/tools?tag=node');
@@ -71,10 +121,26 @@ describe('Tool', () => {
   });
 
   it('should be to remove tools by id', async () => {
+    const user = await factory.attrs('User');
+
+    await request(app)
+      .post('/users')
+      .send(user);
+
+    const {
+      body: { token },
+    } = await request(app)
+      .post('/session')
+      .send({
+        email: user.email,
+        password: user.password,
+      });
+
     const {
       body: { id },
     } = await request(app)
       .post('/tools')
+      .set('authorization', `Bearer ${token}`)
       .send(tool);
 
     const response = await request(app).delete(`/tools/${id}`);

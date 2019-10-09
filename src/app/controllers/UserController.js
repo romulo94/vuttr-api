@@ -9,7 +9,7 @@ class UserController {
     });
 
     if (isDuplicatedEmail) {
-      return res.status(400).json({ error: 'Email already exists' });
+      return res.status(409).json({ error: 'Email already exists' });
     }
 
     const { id, name } = await User.create(req.body);
