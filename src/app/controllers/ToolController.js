@@ -37,6 +37,10 @@ class ToolController {
     const { id } = req.params;
     const data = await Tool.destroy({ where: { id } });
 
+    if (!data) {
+      return res.status(404).json({ error: 'Tool not found' });
+    }
+
     return res.status(204).json(data);
   }
 }
