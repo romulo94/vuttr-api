@@ -1,5 +1,7 @@
 # VUTTR (Very Useful Tools to Remember)
 
+[![Coverage Status](https://coveralls.io/repos/github/romulo94/vuttr-api/badge.svg?branch=develop)](https://coveralls.io/github/romulo94/vuttr-api?branch=develop)
+
 ---
 
 **Api desenvolvida em NodeJS com PostgreSQL.**
