@@ -50,7 +50,7 @@ describe('Tool', () => {
     expect(response.status).toBe(201);
   });
 
-  it('should be able to list tools', async () => {
+  it('should able to list tools', async () => {
     const user = await factory.attrs('User');
 
     await request(app)
@@ -88,7 +88,7 @@ describe('Tool', () => {
     expect(response.status).toBe(200);
   });
 
-  it('should be  to filter tools by tag', async () => {
+  it('should be possible to filter tools by tag', async () => {
     const user = await factory.attrs('User');
 
     await request(app)
@@ -120,7 +120,7 @@ describe('Tool', () => {
     expect(response.body[0].tags).toContain('node');
   });
 
-  it('should be to remove tools by id', async () => {
+  it('should be possible to remove tools by id', async () => {
     const user = await factory.attrs('User');
 
     await request(app)
@@ -146,5 +146,11 @@ describe('Tool', () => {
     const response = await request(app).delete(`/tools/${id}`);
 
     expect(response.status).toBe(204);
+  });
+
+  it('should return 404 if tool does not exist', async () => {
+    const response = await request(app).delete(`/tools/${0}`);
+
+    expect(response.status).toBe(404);
   });
 });

@@ -31,7 +31,7 @@ describe('User', () => {
     expect(response.status).toBe(201);
   });
 
-  it('should not be able to register with duplicated email', async () => {
+  it('should not be able to register with duplicate email', async () => {
     const user = await factory.attrs('User');
 
     await request(app)
