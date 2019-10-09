@@ -39,3 +39,35 @@ or
 ```
 
 ### Libraries
+
+##### Dependencies
+
+- express
+- express-async-errors
+- bcryptjs
+- jsonwebtoken
+- sequelize
+- pg
+- youch
+- cors
+- dotenv
+- @sentry/node
+- @sucrase/jest-plugin
+
+##### DevDependencies
+
+- nodemon
+- sucrase
+- eslint
+- eslint-config-airbnb-base
+- eslint-config-prettier
+- eslint-plugin-import
+- eslint-plugin-prettier
+- jest
+- @types/jest
+- factory-girl
+- faker
+- prettier
+- sequelize-cli
+- sqlite3
+- supertest
