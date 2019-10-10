@@ -1,18 +1,16 @@
 FROM node:10-alpine
 
-COPY package.json yarn.lock ./
-
 WORKDIR  /usr/app
+COPY package.json yarn.lock ./
 
 RUN yarn
 
 COPY . .
 
-COPY . $APP_PATH
-
 RUN yarn global add nodemon
 RUN yarn global add sucrase
 RUN yarn global add sequelize-cli
+RUN yarn global add sequelize
 
 EXPOSE 3000
 

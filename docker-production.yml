@@ -1,33 +1,35 @@
 version: '3'
 
 services:
-  app:
-    environment:
-      NODE_ENV: production
-      PORT: 3000
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: password
-      POSTGRES_DB: tools
-      POSTGRES_PORT: 5432
-      DATABASE_URL: postgres
-      DATABASE_DIALECT: postgres
-      PGADMIN_DEFAULT_EMAIL: admin@vuttr.com
-      PGADMIN_DEFAULT_PASSWORD: vuttr
-
+  postgres:
     labels:
-      - traefik.enable=true
-      - 'traefik.frontend.rule=Host:ec2-54-160-60-91.compute-1.amazonaws.com'
-    build: .
+      - 'traefik.enable=true'
+  app:
+    env_file: .env
+    depends_on:
+      - postgres
     ports:
       - '3000:3000'
-    command: bash bash-docker-compose.sh
+    links:
+      - postgres
+    build: .
+    labels:
+      - 'traefik.enable=true'
+      - 'traefik.http.routers.whoami.rule=Host(`ec2-18-206-151-22.compute-1.amazonaws.com`)'
+      - 'traefik.http.routers.whoami.entrypoints=web'
 
-  reverse-proxy:
-    image: traefik
-    command: --api --docker.exposedbydefault=false
+    command: npm run prod
+
+  traefik:
+    image: 'traefik:v2.0.0-rc3'
+    container_name: 'traefik'
+    command:
+      - '--api.insecure=true'
+      - '--providers.docker=true'
+      - '--providers.docker.exposedbydefault=false'
+      - '--entrypoints.web.address=:80'
     ports:
       - '80:80'
       - '8080:8080'
-
     volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
+      - '/var/run/docker.sock:/var/run/docker.sock:ro'

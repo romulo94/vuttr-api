@@ -2,22 +2,21 @@ version: '3'
 services:
   postgres:
     image: postgres:11.5-alpine
-    container_name: postgres-vuttr
     ports:
       - '5432:5432'
     volumes:
       - /var/lib/postgresql/data
-    env_file: .env.test
+    env_file: .env
   postgres_gui:
     image: dpage/pgadmin4:4.10
     ports:
       - '88:88'
-    env_file: .env.test
+    env_file: .env
   app:
     build: .
     command: npm run dev
     container_name: vuttr
-    env_file: .env.test
+    env_file: .env
     depends_on:
       - postgres
     volumes:
