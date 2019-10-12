@@ -1,8 +1,8 @@
 # VUTTR (Very Useful Tools to Remember)
 
-[![Build Status](https://travis-ci.org/romulo94/vuttr-api.svg?branch=develop)](https://travis-ci.org/romulo94/vuttr-api)
-
 [![Coverage Status](https://coveralls.io/repos/github/romulo94/vuttr-api/badge.svg?branch=develop)](https://coveralls.io/github/romulo94/vuttr-api?branch=develop)
+
+[![Build Status](https://travis-ci.org/romulo94/vuttr-api.svg?branch=develop)](https://travis-ci.org/romulo94/vuttr-api)
 
 ---
 
