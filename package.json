@@ -10,7 +10,8 @@
     "pretest": "NODE_ENV=test sequelize db:migrate",
     "test": "NODE_ENV=test jest --verbose --runInBand --detectOpenHandles --coverage  && cat ./__tests__/coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
     "posttest": "NODE_ENV=production sequelize db:migrate",
-    "prod": "NODE_ENV=production sucrase-node src/server.js"
+    "prepro": "NODE_ENV=production npm run build",
+    "prod": "NODE_ENV=production node dist/server.js"
   },
   "dependencies": {
     "@sentry/node": "^5.6.2",

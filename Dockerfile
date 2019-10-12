@@ -1,11 +1,14 @@
-FROM node:10-alpine
+FROM node:12.5.0-slim
 
-WORKDIR  /usr/app
+WORKDIR  /srv/app
+
+RUN curl -o- -L https://yarnpkg.com/install.sh | bash
+
 COPY package.json yarn.lock ./
 
-RUN yarn
-
 COPY . .
+
+RUN yarn
 
 RUN yarn global add nodemon
 RUN yarn global add sucrase

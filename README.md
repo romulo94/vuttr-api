@@ -6,11 +6,55 @@
 
 ---
 
-**Api desenvolvida em NodeJS com PostgreSQL.**
+**API developed with NodeJS(expressjs) and Sequelize.**
 
-A aplicação é um simples repositório para gerenciar ferramentas com seus respectivos nomes, links, descrições e tags.
+The application is a simple repository for managing tools with their names, links, descriptions and tags.
 
-## How to run
+## Test API:
+
+[see the api](http://ec2-18-206-151-22.compute-1.amazonaws.com/)
+
+## See the documentation
+
+## Install Docker e Docker-compose
+
+- **Docker** _[Documentation](https://docs.docker.com/install/linux/docker-ee/ubuntu/) and download._
+
+- **Compose** _[Documentation](https://docs.docker.com/compose/install/) and download._
+
+- Utils
+  - Init the containers in _detached mode_ (background mode) `docker-compose up -d`
+  - Stop all containers `docker stop $(docker ps -a -q)`
+  - Delete all containers `docker rm $(docker ps -a -q)`
+
+## Using Docker
+
+- Configure your file `.env` (see the example in `.env.example`):
+- Set **DB_HOST=postgres**
+- Start your docker compose:
+
+  ```
+  docker-compose up
+  ```
+
+  **If you're not in _detached mode_ don't close youe terminal**
+  **OBS: Sometimes you need to use `sudo` in all commands**
+
+  **CTRL + C** stop running.
+
+- If you need to rebuild the containers:
+
+  ```
+  docker-compose up --build
+  ```
+
+## How to run (without Docker-compose)
+
+**Really? Please, use docker-compose**
+
+- Configure your file `.env` (see the example in `.env.example`):
+- Run your DB
+- Pay attention: When you run `npm run dev` or `yarn dev` your migrations gonna run too.
 
 with `npm`
 
@@ -27,6 +71,8 @@ or
 ```
 
 ### How to test
+
+**Você precisa ter um banco rodando localmente. Não esqueça de configurar o seu arquivo .env e o env.test**
 
 with `npm`
 
@@ -75,3 +121,8 @@ or
 - sequelize-cli
 - sqlite3
 - supertest
+
+### Configure your eslint
+
+- Please add in your extensions `eslint` and `prettier`
+- In settings.json ( See VsCode ) put : `"editor.formatOnSave: true"` and `"prettier.esLintIntegration": true`
