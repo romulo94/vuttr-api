@@ -7,8 +7,10 @@
     "predev": "sequelize db:migrate",
     "dev": "NODE_ENV=development nodemon -L src/server.js",
     "build": "sucrase ./src -d ./dist --transforms imports",
+    "pretest": "NODE_ENV=test sequelize db:migrate",
     "test": "sh ./test.sh",
     "tests": "NODE_ENV=test jest --verbose --runInBand --detectOpenHandles --coverage  && cat ./__tests__/coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
+    "posttest": "NODE_ENV=test sequelize db:migrate",
     "prepro": "NODE_ENV=production npm run build",
     "prod": "NODE_ENV=production node dist/server.js"
   },
