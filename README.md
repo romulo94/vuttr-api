@@ -32,7 +32,8 @@ The application is a simple repository for managing tools with their names, link
 ## Using Docker
 
 - Configure your file `.env` (see the example in `.env.example`):
-- Set **DB_HOST=postgres**
+- Put the same value in your `.env` to database (DB) and docker (POSTGRES)
+- Set **DB_HOST=postgres** and
 - Start your docker compose:
 
   ```
@@ -55,6 +56,7 @@ The application is a simple repository for managing tools with their names, link
 **Really? Please, use docker-compose**
 
 - Configure your file `.env` (see the example in `.env.example`):
+- Set **DB_HOST=localhost** or to your remote database
 - Run your DB
 - Pay attention: When you run `npm run dev` or `yarn dev` your migrations gonna run too.
 
@@ -128,3 +130,7 @@ or
 
 - Please add in your extensions `eslint` and `prettier`
 - In settings.json ( See VsCode ) put : `"editor.formatOnSave: true"` and `"prettier.esLintIntegration": true`
+
+##### Any question or bug:
+
+Open an issue, please.
